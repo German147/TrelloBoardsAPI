@@ -1,0 +1,63 @@
+{
+	"id": "a144ed4d-22ee-41ff-8319-f297fdb118d2",
+	"values": [
+		{
+			"key": "trelloAuthKey",
+			"value": "66230352ae879578682cf7c7f2cf090a",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "trelloAuthToken",
+			"value": "ATTAfea56e650a3293694d5d8e55991c689732b65d012181c824e19fda5b16d10849E6D52209",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "base_uri",
+			"value": "api.trello.com",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "Sprint Backlog idVariable",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "In Progress idVariable",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "Backlog idVariable",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "trello_Board_ID",
+			"value": "",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "add_name_To_Board",
+			"value": "",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "updatedNameToBoard",
+			"value": "",
+			"type": "default",
+			"enabled": true
+		}
+	],
+	"name": "Globals",
+	"_postman_variable_scope": "globals",
+	"_postman_exported_at": "2025-11-22T11:16:07.405Z",
+	"_postman_exported_using": "Postman/11.61.10"
+}
