@@ -1,0 +1,266 @@
+{
+	"info": {
+		"_postman_id": "329df22a-c165-4a1c-94a3-d4aac2b447c4",
+		"name": "TrelloBoardsCRUD",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "16820617"
+	},
+	"item": [
+		{
+			"name": "Create a Trello Board",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//obtener el id\r",
+							" var jsonData = pm.response.json();\r",
+							" //guardamos el campo shortUrl donde se encuantra nuestro id\r",
+							" let url = jsonData.shortUrl;\r",
+							" //extraemos el ultimo fragmento donde se encutra nuestro ID usando el metodo pop()\r",
+							" let id_Board = url.split(\"/\").pop();\r",
+							"  \r",
+							"//dar valor del is a la variable de entorno\r",
+							"pm.environment.set(\"trello_Board_ID\", id_Board);\r",
+							"\r",
+							"pm.test(\"Body matches string\", function () {\r",
+							"     pm.expect(pm.response.text()).to.include(pm.globals.get(\"add_name_To_Board\"));\r",
+							"  //  pm.expect(pm.response.text()).to.include(\"string_you_want_to_search\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://{{base_uri}}/1/boards/?name={{add_name_To_Board}}&key={{trelloAuthKey}}&token={{trelloAuthToken}}",
+					"protocol": "https",
+					"host": [
+						"{{base_uri}}"
+					],
+					"path": [
+						"1",
+						"boards",
+						""
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "{{add_name_To_Board}}"
+						},
+						{
+							"key": "key",
+							"value": "{{trelloAuthKey}}"
+						},
+						{
+							"key": "token",
+							"value": "{{trelloAuthToken}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateBoardName",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Body matches string\", function () {\r",
+							"      pm.expect(pm.response.text()).to.include(pm.globals.get(\"updatedNameToBoard\"));\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": \"6921113656a73e0b38822026\",\r\n    \"name\": \"GermanBoard3\",\r\n    \"desc\": \"\",\r\n    \"descData\": null,\r\n    \"closed\": false,\r\n    \"idOrganization\": \"66216c1686b866505f7beeb6\",\r\n    \"idEnterprise\": null,\r\n    \"pinned\": false,\r\n    \"url\": \"https://trello.com/b/wBjQd9dN/germanboard2\",\r\n    \"shortUrl\": \"https://trello.com/b/wBjQd9dN\",\r\n    \"prefs\": {\r\n        \"permissionLevel\": \"private\",\r\n        \"hideVotes\": false,\r\n        \"voting\": \"disabled\",\r\n        \"comments\": \"members\",\r\n        \"invitations\": \"members\",\r\n        \"selfJoin\": true,\r\n        \"cardCovers\": true,\r\n        \"showCompleteStatus\": true,\r\n        \"cardCounts\": false,\r\n        \"isTemplate\": false,\r\n        \"cardAging\": \"regular\",\r\n        \"calendarFeedEnabled\": false,\r\n        \"hiddenPluginBoardButtons\": [],\r\n        \"switcherViews\": [\r\n            {\r\n                \"viewType\": \"Board\",\r\n                \"enabled\": true\r\n            },\r\n            {\r\n                \"viewType\": \"Table\",\r\n                \"enabled\": true\r\n            },\r\n            {\r\n                \"viewType\": \"Calendar\",\r\n                \"enabled\": false\r\n            },\r\n            {\r\n                \"viewType\": \"Dashboard\",\r\n                \"enabled\": false\r\n            },\r\n            {\r\n                \"viewType\": \"Timeline\",\r\n                \"enabled\": false\r\n            },\r\n            {\r\n                \"viewType\": \"Map\",\r\n                \"enabled\": false\r\n            }\r\n        ],\r\n        \"autoArchive\": null,\r\n        \"background\": \"blue\",\r\n        \"backgroundColor\": \"#0079BF\",\r\n        \"backgroundDarkColor\": null,\r\n        \"backgroundImage\": null,\r\n        \"backgroundDarkImage\": null,\r\n        \"backgroundImageScaled\": null,\r\n        \"backgroundTile\": false,\r\n        \"backgroundBrightness\": \"dark\",\r\n        \"sharedSourceUrl\": null,\r\n        \"backgroundBottomColor\": \"#0079BF\",\r\n        \"backgroundTopColor\": \"#0079BF\",\r\n        \"canBePublic\": true,\r\n        \"canBeEnterprise\": true,\r\n        \"canBeOrg\": true,\r\n        \"canBePrivate\": true,\r\n        \"canInvite\": true\r\n    },\r\n    \"labelNames\": {\r\n        \"green\": \"\",\r\n        \"yellow\": \"\",\r\n        \"orange\": \"\",\r\n        \"red\": \"\",\r\n        \"purple\": \"\",\r\n        \"blue\": \"\",\r\n        \"sky\": \"\",\r\n        \"lime\": \"\",\r\n        \"pink\": \"\",\r\n        \"black\": \"\",\r\n        \"green_dark\": \"\",\r\n        \"yellow_dark\": \"\",\r\n        \"orange_dark\": \"\",\r\n        \"red_dark\": \"\",\r\n        \"purple_dark\": \"\",\r\n        \"blue_dark\": \"\",\r\n        \"sky_dark\": \"\",\r\n        \"lime_dark\": \"\",\r\n        \"pink_dark\": \"\",\r\n        \"black_dark\": \"\",\r\n        \"green_light\": \"\",\r\n        \"yellow_light\": \"\",\r\n        \"orange_light\": \"\",\r\n        \"red_light\": \"\",\r\n        \"purple_light\": \"\",\r\n        \"blue_light\": \"\",\r\n        \"sky_light\": \"\",\r\n        \"lime_light\": \"\",\r\n        \"pink_light\": \"\",\r\n        \"black_light\": \"\"\r\n    },\r\n    \"limits\": {}\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{base_uri}}/1/boards/{{trello_Board_ID}}?key={{trelloAuthKey}}&token={{trelloAuthToken}}",
+					"protocol": "https",
+					"host": [
+						"{{base_uri}}"
+					],
+					"path": [
+						"1",
+						"boards",
+						"{{trello_Board_ID}}"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{trelloAuthKey}}"
+						},
+						{
+							"key": "token",
+							"value": "{{trelloAuthToken}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetBoardById",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\r",
+							"pm.test(\"Validate Permission Level\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    pm.expect(responseData.prefs.permissionLevel).to.eql(\"private\");\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Response status code is 200\", function () {\r",
+							"    pm.expect(pm.response.code).to.equal(200);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Response Content-Type is application/json\", function () {\r",
+							"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"  pm.expect(pm.response.responseTime).to.be.below(300);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Presence of required fields\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"\r",
+							"    pm.expect(responseData).to.have.property('id');\r",
+							"    pm.expect(responseData).to.have.property('name');\r",
+							"    pm.expect(responseData).to.have.property('desc');\r",
+							"    pm.expect(responseData).to.have.property('descData');\r",
+							"    pm.expect(responseData).to.have.property('closed');\r",
+							"    pm.expect(responseData).to.have.property('idOrganization');\r",
+							"    pm.expect(responseData).to.have.property('pinned');\r",
+							"    pm.expect(responseData).to.have.property('url');\r",
+							"    pm.expect(responseData).to.have.property('shortUrl');\r",
+							"});\r",
+							"\r",
+							"\r",
+							"\r",
+							"  pm.test(\"Body contains global variable value\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(pm.globals.get(\"updatedNameToBoard\"));\r",
+							"});\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://{{base_uri}}/1/boards/{{trello_Board_ID}}?key={{trelloAuthKey}}&token={{trelloAuthToken}}",
+					"protocol": "https",
+					"host": [
+						"{{base_uri}}"
+					],
+					"path": [
+						"1",
+						"boards",
+						"{{trello_Board_ID}}"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{trelloAuthKey}}"
+						},
+						{
+							"key": "token",
+							"value": "{{trelloAuthToken}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteBoarByID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Board does not exist\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"      pm.expect(pm.response.text()).to.include(null);\r",
+							"  \r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://{{base_uri}}/1/boards/{{trello_Board_ID}}?key={{trelloAuthKey}}&token={{trelloAuthToken}}",
+					"protocol": "https",
+					"host": [
+						"{{base_uri}}"
+					],
+					"path": [
+						"1",
+						"boards",
+						"{{trello_Board_ID}}"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{trelloAuthKey}}"
+						},
+						{
+							"key": "token",
+							"value": "{{trelloAuthToken}}"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
